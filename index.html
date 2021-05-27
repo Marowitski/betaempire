@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Project: Interactive slideshow</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <br>
+    <button type="button" id="prev">Previous</button>
+    <img id="one"
+        src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/mr-pink-green.png"
+        width="300" alt="Mushrooms">
+    <img id="two"
+        src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/robot_male_3.png"
+        width="300" alt="Mushrooms">
+    <img id="three"
+        src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/creatures/Hopper-Happy.png"
+        width="300" alt="Mushrooms">
+    <img id="four"
+        src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/creatures/Winston.png"
+        width="300" alt="Mushrooms">
+    <button type="button" id="next">Next ➡</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $("#two").hide();
+        $("#three").hide();
+        $("#four").hide();
+        var shownPhotoNo = 1;
+        $("[id=next]").on("click", function (event) {
+            if (shownPhotoNo === 1) {
+                $("#one").hide();
+                $("#two").show();
+            } else if (shownPhotoNo === 2) {
+                $("#two").hide();
+                $("#three").show();
+            } else if (shownPhotoNo === 3) {
+                $("#three").hide();
+                $("#four").show();
+            } else if (shownPhotoNo === 4) {
+                $("#four").hide();
+                $("#one").show();
+                shownPhotoNo = 0;
+            }
+            shownPhotoNo += 1;
+        });
+        $("[id=prev]").on("click", function (event) {
+            if (shownPhotoNo === 1) {
+                $("#one").hide();
+                $("#four").show();
+                shownPhotoNo = 5;
+            } else if (shownPhotoNo === 2) {
+                $("#two").hide();
+                $("#one").show();
+            } else if (shownPhotoNo === 3) {
+                $("#three").hide();
+                $("#two").show();
+            } else if (shownPhotoNo === 4) {
+                $("#four").hide();
+                $("#three").show();
+            }
+            shownPhotoNo = shownPhotoNo - 1;
+        });
+    </script>
+
+</body>
+
+</html>
